@@ -17,35 +17,33 @@ namespace EmployeeWage
             
             for(int day=1; day<=WorkingDays;day++)
             {
-            int empInput = random.Next(0, 3);
+              int empInput = random.Next(0, 3);
 
                 switch(empInput)
                 {
                     case FullTime:
                     Console.WriteLine("Full time Employee is present");
                     empHrs = 8;
-                    empPayment = empRatePerHr * empHrs;
                         break;
 
                     case PartTime:
                     Console.WriteLine("Part time Employee is present ");
                     empHrs = 4;
-                    empPayment = empRatePerHr * empHrs;
                         break;
 
                     default:
                     Console.WriteLine("Employee is absent");
                     empHrs = 0;
-                    empPayment = empRatePerHr * empHrs;
                         break;
                 }
           
-                Console.WriteLine("Daily Employee Payment is: " + empPayment);
+                empPayment = empRatePerHr * empHrs;
+                Console.WriteLine("Daily Wage for day {0} is: {1}", day,empPayment);
                 TotalPayment = TotalPayment + empPayment;
-                Console.WriteLine("Total Employee Payment for {0} is: {1}" + WorkingDays,TotalPayment);
             
             }
 
+            Console.WriteLine("Total Employee Payment for {0} days is: {1}", WorkingDays,TotalPayment);
             Console.ReadLine();
         }
     }
