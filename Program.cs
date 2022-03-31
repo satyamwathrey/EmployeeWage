@@ -10,40 +10,44 @@ namespace EmployeeWage
             const int PartTime = 2;
             const int WorkingDays = 20;
             const int empRatePerHr = 20;
+            const int MaxHrsPerMonth = 100;
             int empHrs = 0;
             int empPayment = 0;
             int TotalPayment = 0;
+            int TotalEmpHrs = 0;
+            int day = 1;
+
             Random random = new Random();
             
-            for(int day=1; day<=WorkingDays;day++)
+            while(day <= WorkingDays && TotalEmpHrs <= MaxHrsPerMonth)
             {
               int empInput = random.Next(0, 3);
 
                 switch(empInput)
                 {
                     case FullTime:
-                    Console.WriteLine("Full time Employee is present");
                     empHrs = 8;
                         break;
 
                     case PartTime:
-                    Console.WriteLine("Part time Employee is present ");
                     empHrs = 4;
                         break;
 
                     default:
-                    Console.WriteLine("Employee is absent");
                     empHrs = 0;
                         break;
                 }
           
                 empPayment = empRatePerHr * empHrs;
-                Console.WriteLine("Daily Wage for day {0} is: {1}", day,empPayment);
-                TotalPayment = TotalPayment + empPayment;
+                Console.WriteLine("Daily Wage for day {0} is: {1} for {2} Hrs", day, empPayment, empHrs);
+                TotalPayment += empPayment;
+                TotalEmpHrs += empHrs;
+                day++;
             
             }
 
-            Console.WriteLine("Total Employee Payment for {0} days is: {1}", WorkingDays,TotalPayment);
+            Console.WriteLine("Total Days {0}, Total Working hours: {1}", (day-1), TotalEmpHrs);
+            Console.WriteLine("Total Employee Wage is: " + TotalPayment);
             Console.ReadLine();
         }
     }
